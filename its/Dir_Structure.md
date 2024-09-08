@@ -1,3 +1,4 @@
+```
 project-management-tool/
 ├── src/
 │ ├── app/
@@ -39,3 +40,4 @@ project-management-tool/
 ├── .env
 ├── package.json
 └── tsconfig.json
+```
