@@ -1,5 +1,16 @@
 import { ApolloServer, gql } from "apollo-server"
 
+let tweets = [
+  {
+    id: "1",
+    text: "first hello",
+  },
+  {
+    id: "2",
+    text: "second hello",
+  },
+]
+
 const typeDefs = gql`
   type User {
     id: ID!
@@ -8,7 +19,7 @@ const typeDefs = gql`
   type Tweet {
     id: ID!
     text: String!
-    author: User!
+    author: User
   }
   type Query {
     allTweets: [Tweet!]!
@@ -24,9 +35,29 @@ const typeDefs = gql`
 
 const resolvers = {
   Query: {
-    tweet() {
-      console.log("called")
-      return null
+    allTweets() {
+      return tweets
+    },
+    tweet(root, { id }) {
+      return tweets.find((tweet) => tweet.id === id)
+    },
+  },
+  Mutation: {
+    postTweet(_, { text, userId }) {
+      const newTweet = {
+        id: tweets.length + 1,
+        text,
+      }
+      tweets.push(newTweet) // 실제로는 DB에 넣어야함.
+      return newTweet
+    },
+
+    deleteTweet(_, { id }) {
+      const tweet = tweets.find((tweet) => tweet.id === id)
+      if (!tweet) return false
+
+      tweets = tweets.filter((tweet) => tweet.id !== id)
+      return true
     },
   },
 }
