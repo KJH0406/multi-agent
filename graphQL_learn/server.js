@@ -22,7 +22,16 @@ const typeDefs = gql`
   }
 `
 
-const server = new ApolloServer({ typeDefs })
+const resolvers = {
+  Query: {
+    tweet() {
+      console.log("called")
+      return null
+    },
+  },
+}
+
+const server = new ApolloServer({ typeDefs, resolvers })
 
 server.listen().then(({ url }) => {
   console.log(`Running on ${url}`)
