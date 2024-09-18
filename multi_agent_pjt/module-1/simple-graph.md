@@ -1,3 +1,5 @@
+# LangGraph 기본 구조 및 간단한 그래프 구현 학습
+
 ![Screenshot 2024-08-20 at 3.11.22 PM.png](https://cdn.prod.website-files.com/65b8cd72835ceeacd4449a53/66dba5f465f6e9a2482ad935_simple-graph1.png)
 
 ## 요약
