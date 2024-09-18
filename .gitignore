@@ -2,7 +2,8 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,venv,direnv,dotenv,visualstudiocode,macos
 
 node_modules
-
+lc-academy-env
+.env.example
 ### direnv ###
 .direnv
 .envrc
