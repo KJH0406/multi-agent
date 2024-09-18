@@ -1,59 +1,9 @@
-# LangChain Academy 
+# 멀티 에이전트(with LangGraph)
 
-## Introduction
+## 맥락
 
-Welcome to LangChain Academy! This is a growing set of modules focused on foundational concepts within the LangChain ecosystem. Module 0 is basic setup and Modules 1 - 4 focus on LangGraph, progressively adding more advanced themes. In each module folder, you'll see a set of notebooks. A video accompanies each notebook to guide you through the topic. Each module also has a `studio` subdirectory, with a set of relevant graphs that we will explore using the LangGraph API and Studio.
+LangChain을 활용하여 LLM 애플리케이션을 쉽게 만들 수 있음. 특히 LLM 애플리케이션 중 하나인 에이전트(Agent)를 활용하여 이전에는 불가능했던 광범위한 작업을 자동화할 수 있음.
 
-## Setup
+하지만 실제로 이러한 작업을 안정적으로 수행하는 시스템을 구축하는 것은 어려움. 에이전트를 실제 환경에 배포하면서, 더 많은 제어가 필요하다는 것을 알게 되었음. 예를 들어, 에이전트가 항상 특정 도구를 먼저 호출하거나 상태에 따라 다른 프롬프트를 사용해야 할 수 있음.
 
-### Clone repo
-```
-git clone https://github.com/langchain-ai/langchain-academy.git
-$ cd langchain-academy
-```
-
-### Create an environment and install dependencies  
-```
-$ python3 -m venv lc-academy-env
-$ source lc-academy-env/bin/activate
-$ pip install -r requirements.txt
-```
-
-### Running notebooks
-Notebooks for each module are in the `module-` folders.
-```
-$ jupyter notebook
-```
-
-### Set OpenAI API key
-* If you don't have an OpenAI API key, you can sign up [here](https://openai.com/index/openai-api/).
-*  Set `OPENAI_API_KEY` in your environment 
-
-### Sign up for LangSmith
-
-* Sign up [here](https://docs.smith.langchain.com/) 
-*  Set `LANGCHAIN_API_KEY`, `LANGCHAIN_TRACING_V2=true` in your environment 
-
-### Tavily for web search
-
-Tavily Search API is a search engine optimized for LLMs and RAG, aimed at efficient, quick, and persistent search results. You can sign up for an API key [here](https://tavily.com/). It's easy to sign up and offers a generous free tier. Some lessons (in Module 4) will use Tavily. Set `TAVILY_API_KEY` in your environment.
-
-### Set up LangGraph Studio
-
-* Currently Studio only has macOS support
-* Download the latest `.dmg` file [here](https://github.com/langchain-ai/langgraph-studio?tab=readme-ov-file#download)
-* Install Docker desktop for Mac [here](https://docs.docker.com/engine/install/)
-
-### Running Studio
-Graphs for studio are in the `module-x/studio/` folders.
-
-* To use Studio, you will need to create a .env file with the relevant API keys
-* Run this from the command line to create these files for module 1 to 4, as an example:
-```
-$ for i in {1..4}; do
-  cp module-1/studio/.env.example module-1/studio/.env
-  echo "OPENAI_API_KEY=\"$OPENAI_API_KEY\"" > module-1/studio/.env
-done
-echo "TAVILY_API_KEY=\"$TAVILY_API_KEY\"" >> module-4/studio/.env
-
-```
+이 문제를 해결하기 위해 [LangGraph](https://langchain-ai.github.io/langgraph/)라는 새로운 개념이 도입되었음. 이는 에이전트 및 멀티 에이전트 애플리케이션을 구축하기 위한 프레임워크임. LangChain 패키지와는 별개로, LangGraph의 핵심 설계 포인트는 개발자가 실제 에이전트를 도입하기 위한 시스템 복잡성에 적합한 에이전트 워크플로우에 더 나은 정밀도와 제어를 추가할 수 있도록 돕는 것임.
